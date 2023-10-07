@@ -7,129 +7,159 @@ Anaconda - Python 3.7
 
 ## Algorithm:
 ### Step1:
-
 Import the required packages for further process.
 
 ### Step2:
-
-Read the image and convert the bgr image to gray scale image.
+Read the image and convert the rgb image to gray scale image.
+<br>
 
 ### Step3:
-
-Use any filters for smoothing the image to reduse the noise.
+Use filters for smoothing the image to reduce the noise.
 
 ### Step4:
-
-Apply the respective filters -Sobel,Laplacian edge dectector and Canny edge dector.
+Apply the respective filters - Sobel, Laplacian edge detector and Canny edge detector.
+<br>
 
 ### Step5:
-
-Display the filtered image using plot and imshow.   
+Display the filtered image using plot and imshow.
+<br>
 
  
 ## Program:
-```
-Developed by : S.Mohanraj
-Register No  : 212221230065
-```
 
-``` Python
-# Import the packages
+## Developed by: Mohanraj S
+## Reg no:212221230065
+
+
+
+## Sobel X:
+~~~
 
 import cv2
 import matplotlib.pyplot as plt
-
-# Load the image, Convert to grayscale and remove noise
-
-image = cv2.imread("Car.png")
-gimage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-image = cv2.GaussianBlur(gimage,(3,3),0)
-
-# SOBEL EDGE DETECTOR
-
-#SOBEL X:
-
-sobelx = cv2.Sobel(image,cv2.CV_64F,1,0,ksize = 5)
-plt.figure(figsize=(8,8))
+image=cv2.imread("1.jpg")
+gray_img=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+img=cv2.GaussianBlur(gray_img,(3,3),0)
+sobelx=cv2.Sobel(img,cv2.CV_64F,1,0,ksize=5)
+sobely=cv2.Sobel(img,cv2.CV_64F,0,1,ksize=5)
+sobelxy=cv2.Sobel(img,cv2.CV_64F,1,1,ksize=5)
+plt.figure(figsize=(16,16))
 plt.subplot(1,2,1)
-plt.imshow(image,cmap = 'RdPu')
-plt.title('Rdpu')
+plt.imshow(img,cmap='gray')
+plt.title('Gray')
 plt.subplot(1,2,2)
-plt.imshow(sobelx,cmap = 'RdPu')
-plt.title("Sobel X")
+plt.imshow(sobelx,cmap='gray')
+plt.title("Sobel-X")
 plt.xticks([])
 plt.yticks([])
 plt.show()
+~~~
 
-# SOBEL Y:
-
-sobely = cv2.Sobel(image,cv2.CV_64F,0,1,ksize = 5)
-plt.figure(figsize = (8,8))
+### Sobel Y:
+~~~
+import cv2
+import matplotlib.pyplot as plt
+image=cv2.imread("1.jpg")
+gray_img=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+img=cv2.GaussianBlur(gray_img,(3,3),0)
+sobely=cv2.Sobel(img,cv2.CV_64F,0,1,ksize=5)
+plt.figure(figsize=(16,16))
 plt.subplot(1,2,1)
-plt.imshow(image,cmap = 'OrRd')
-plt.title('OrRd')
+plt.imshow(img,cmap='Purples')
+plt.title('Purples')
 plt.subplot(1,2,2)
-plt.imshow(sobely,cmap = 'OrRd')
-plt.title("Sobel Y")
+plt.imshow(sobely,cmap='Purples')
+plt.title("Sobel-Y")
 plt.xticks([])
 plt.yticks([])
 plt.show()
+~~~
 
-# SOBEL XY:
-
-sobelxy = cv2.Sobel(image,cv2.CV_64F,1,1,ksize=5)
-plt.figure(figsize = (8,8))
+### Sobel XY:
+~~~
+import cv2
+import matplotlib.pyplot as plt
+image=cv2.imread("1.jpg")
+gray_img=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+img=cv2.GaussianBlur(gray_img,(3,3),0)
+sobelxy=cv2.Sobel(img,cv2.CV_64F,1,1,ksize=5)
+plt.figure(figsize=(16,16))
 plt.subplot(1,2,1)
-plt.imshow(image,cmap = 'BuPu')
-plt.title('BuPu')
+plt.imshow(img,cmap='Oranges')
+plt.title('Gray')
 plt.subplot(1,2,2)
-plt.imshow(sobelxy,cmap = 'BuPu')
-plt.title('Sobel XY')
+plt.imshow(sobelxy,cmap='Oranges')
+plt.title("Sobel-XY")
 plt.xticks([])
 plt.yticks([])
 plt.show()
-
-# LAPLACIAN EDGE DETECTOR
-
-laplacian = cv2.Laplacian(image,cv2.CV_64F)
-plt.figure(figsize = (8,8))
-plt.subplot(1,2,1)
-plt.imshow(image,cmap = 'bone')
-plt.title('bone')
-plt.subplot(1,2,2)
-plt.imshow(laplacian,cmap = 'bone')
-plt.title('Laplacian')
-plt.xticks([])
-plt.yticks([])
-plt.show()
-
-# CANNY EDGE DETECTOR
-
-canny_edge = cv2.Canny(image,120,150)
-plt.figure(figsize = (8,8))
-plt.subplot(1,2,1)
-plt.imshow(image,cmap = 'gray')
-plt.title('gray')
-plt.subplot(1,2,2)
-plt.imshow(canny_edge,cmap = 'gray')
-plt.title('Canny Edges')
-plt.xticks([])
-plt.yticks([])
-plt.show()
-```
-## Output:
-### SOBEL EDGE DETECTOR
-#### SOBEL X
-![](sx.png)
-#### SOBEL Y
-![](sy.png)
-#### SOBEL XY
-![](sz.png)
+~~~
 
 ### LAPLACIAN EDGE DETECTOR
-![](lap.png)
+~~~
+import cv2
+import matplotlib.pyplot as plt
+image=cv2.imread("1.jpg")
+gray_img=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+img=cv2.GaussianBlur(gray_img,(3,3),0)
+laplacian = cv2.Laplacian(img,cv2.CV_64F)
+plt.figure(figsize=(16,16))
+plt.subplot(1,2,1)
+plt.imshow(img,cmap='Blues')
+plt.title('Gray')
+plt.subplot(1,2,2)
+plt.imshow(laplacian,cmap='Blues')
+plt.title("Laplacian")
+plt.xticks([])
+plt.yticks([])
+plt.show()
+~~~
+
 
 ### CANNY EDGE DETECTOR
-![](can.png)
+~~~
+import cv2
+import matplotlib.pyplot as plt
+image=cv2.imread("1.jpg")
+gray_img=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+img=cv2.GaussianBlur(gray_img,(3,3),0)
+canny_edges = cv2.Canny(image, 120, 150)
+plt.figure(figsize=(16,16))
+plt.subplot(1,2,1)
+plt.imshow(img,cmap='gray')
+plt.title('Gray')
+plt.subplot(1,2,2)
+plt.imshow(canny_edges,cmap='gray')
+plt.title("Canny_edges")
+plt.xticks([])
+plt.yticks([])
+plt.show()
+~~~
+
+
+
+
+## Output:
+### SOBEL EDGE DETECTOR
+
+### Sobel X:
+![1](https://user-images.githubusercontent.com/94980741/168770230-8553ca72-e8a3-49d6-b545-2f72f9c2b461.png)
+
+### Sobel Y:
+![2](https://user-images.githubusercontent.com/94980741/168771909-00a411d6-b2f7-4641-8cbf-53c398131cdc.png)
+
+### Sobel XY:
+![3](https://user-images.githubusercontent.com/94980741/168771993-afa30cbf-e7ba-467d-bcc5-a05cf33eb779.png)
+
+
+### LACIAN EDGE DETECTOR
+![4](https://user-images.githubusercontent.com/94980741/168772050-da8faf53-0a37-49dc-82fc-dd80b7d39719.png)
+
+
+
+### CANNY EDGE DETECTOR
+![5](https://user-images.githubusercontent.com/94980741/168772145-cdc85075-8cd7-4363-8f6b-921fc89727be.png)
+
+
 ## Result:
 Thus the edges are detected using Sobel, Laplacian, and Canny edge detectors.
